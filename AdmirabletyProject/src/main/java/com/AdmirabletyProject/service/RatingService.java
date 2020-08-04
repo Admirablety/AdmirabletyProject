@@ -66,6 +66,7 @@ public class RatingService {
     
     
     
+    
     public List<Rating> findLastFiveForSubject(User subject) {
     	List<Rating>ratingsForSubjectList = ratingRepository.findAllBySubjectOrderByCreatedAtDesc(subject);
     	List<Rating> lastFiveRatingsForSubject = ratingsForSubjectList.subList(0, 5);
