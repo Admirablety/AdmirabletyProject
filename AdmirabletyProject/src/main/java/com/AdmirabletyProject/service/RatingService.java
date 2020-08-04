@@ -41,6 +41,7 @@ public class RatingService {
         return tweets;
     }
     
+    /* Long-winded way to make the time format look nice (through a RatingDislpay model) */
     private List<RatingDisplay> formatTimestamps(List<Rating> ratings) {
     	List<RatingDisplay> response = new ArrayList<>();
     	PrettyTime prettyTime = new PrettyTime();

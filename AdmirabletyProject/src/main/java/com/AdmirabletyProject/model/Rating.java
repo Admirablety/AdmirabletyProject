@@ -33,7 +33,7 @@ public class Rating {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private User subject;
 	
-	//So as to set a default weight equal to the weight of a user overall-rated 1.0 if a rater has no overall rating (is yet unrated)
+	//So as to set a default weight equal to the weight of a 1.0-rated user if a rater has no overall rating (is yet unrated)
 	private Double rater_rating = 1.0;
 	
 	private Integer stars_given;

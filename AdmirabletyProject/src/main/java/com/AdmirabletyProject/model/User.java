@@ -59,7 +59,7 @@ public class User {
     
     private int active;
     
-    public Double overall_rating;
+    public Double overall_rating = 2.0;
     
     private String designation;
     
