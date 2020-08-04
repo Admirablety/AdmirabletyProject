@@ -79,7 +79,7 @@ public class User {
 			@Length(min = 5, message = "Your password must have at least 5 characters") @NotEmpty(message = "Please provide a password") String password,
 			@NotEmpty(message = "Please provide your first name") String firstName,
 			@NotEmpty(message = "Please provide your last name") String lastName, int active,
-			Set<TrackRole> roles, List<User> followers, List<User> following) {
+			Set<TrackRole> roles, List<User> tracking) {
 		super();
 		this.email = email;
 		this.username = username;
@@ -88,8 +88,7 @@ public class User {
 		this.lastName = lastName;
 		this.active = active;
 		this.roles = roles;
-		this.followers = followers;
-		this.following = following;
+		this.following = tracking;
 	}
     
     //Getters and Setters

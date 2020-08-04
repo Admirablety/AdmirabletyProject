@@ -11,22 +11,18 @@ import org.springframework.stereotype.Service;
 
 import com.Admirablety.model.TrackRole;
 import com.Admirablety.model.User;
-import com.Admirablety.repository.TrackRoleRepository;
 import com.Admirablety.repository.UserRepository;
 
 @Service
 public class UserService {
 
     private UserRepository userRepository;
-    private TrackRoleRepository roleRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserService(UserRepository userRepository, 
-                       TrackRoleRepository roleRepository,
                        BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
     
@@ -47,8 +43,8 @@ public class UserService {
     public User saveNewUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
-        TrackRole userRole = roleRepository.findByRole("USER");
-        user.setRoles(new HashSet<TrackRole>(Arrays.asList(userRole)));
+        User userRole = userRepository.findByRole("USER");
+        user.setRoles(new HashSet<User>(Arrays.asList(userRole)));
         return userRepository.save(user);
     }
     
