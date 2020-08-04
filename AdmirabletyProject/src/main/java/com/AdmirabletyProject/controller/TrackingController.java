@@ -17,7 +17,7 @@ public class TrackingController {
     @Autowired
     private UserService userService;
     
-    @PostMapping(value = "/follow/{username}")
+    @PostMapping(value = "/track/{username}")
     public String follow(@PathVariable(value="username") String username, 
                          HttpServletRequest request) {
     	User loggedInUser = userService.getLoggedInUser();
@@ -30,7 +30,7 @@ public class TrackingController {
 
     }
     
-    @PostMapping(value = "/unfollow/{username}")
+    @PostMapping(value = "/purge/{username}")
     public String unfollow(@PathVariable(value="username") String username, HttpServletRequest request) {
         User loggedInUser = userService.getLoggedInUser();
         User userToPurge = userService.findByUsername(username);

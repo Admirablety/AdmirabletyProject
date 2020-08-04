@@ -31,11 +31,11 @@ public class User {
     @Column(name = "user_id")
     private Long id;
     
-    @Email(message = "Please provide a valid email")
-    @NotEmpty(message = "Please provide an email")
+    @Email(message = "Please enter a valid email")
+    @NotEmpty(message = "Please enter a valid email")
     private String email;
     
-    @NotEmpty(message = "Please provide a username")
+    @NotEmpty(message = "Please enter a username")
     @Length(min = 3, message = "Your username must have at least 3 characters")
     @Length(max = 15, message = "Your username cannot have more than 15 characters")
     @Pattern(regexp="[^\\s]+", message="Your username cannot contain spaces")
@@ -59,7 +59,7 @@ public class User {
     
     private int active;
     
-    private Double overall_rating;
+    public Double overall_rating;
     
     private String designation;
     
@@ -74,23 +74,11 @@ public class User {
     @JoinTable(name = "user_tracker", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "tracker_id"))
     private List<User> trackers;
     
-    @ManyToMany(mappedBy="trackerss")
+    @ManyToMany(mappedBy="trackers")
 	private List<User> tracking;
-    
-    
-    
     
    //Empty Constructor for JPA
     public User() {}
-
-    //Constructor
-    
-    
-    //Getters and Setters
-
-	public String getEmail() {
-		return email;
-	}
 
 	public User(Long id,
 			@Email(message = "Please provide a valid email") @NotEmpty(message = "Please provide an email") String email,
@@ -119,10 +107,6 @@ public class User {
 		this.tracking = tracking;
 	}
 
-	
-
-
-    
 	public String getUsername() {
 		return username;
 	}
@@ -233,6 +217,10 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getEmail() {
+		return email;
 	}
 
 	@Override

@@ -18,7 +18,7 @@ import com.AdmirabletyProject.repository.UserRepository;
 public class UserService {
 
     private UserRepository userRepository;
-    private TrackingRepository roleRepository;
+    private TrackingRepository trackingRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
@@ -26,7 +26,7 @@ public class UserService {
                        TrackingRepository roleRepository,
                        BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
+        this.trackingRepository = roleRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
     
@@ -45,7 +45,7 @@ public class UserService {
     public User saveNewUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
-        Tracking userRole = roleRepository.findByRole("USER");
+        Tracking userRole = trackingRepository.findByRole("USER");
         user.setRoles(new HashSet<Tracking>(Arrays.asList(userRole)));
         return userRepository.save(user);
     }

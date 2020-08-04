@@ -5,19 +5,15 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.validation.constraints.NotEmpty;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Rating {
@@ -37,11 +33,85 @@ public class Rating {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private User subject;
 	
-	@NotEmpty(message = "Tweet cannot be empty")
-	@Length(max = 280, message = "Tweet cannot have more than 280 characters")
-	private String message;
+	//So as to set a default weight equal to the weight of a user overall-rated 1.0 if a rater has no overall rating (is yet unrated)
+	private Double rater_rating = 1.0;
+	
+	private Integer stars_given;
 		
 	@CreationTimestamp 
 	private Date createdAt;
+	
+	public Rating() {}
+
+	
+	public Rating(Long id, User rater, User subject, Double rater_rating, Integer stars_given, Date createdAt) {
+		super();
+		this.id = id;
+		this.rater = rater;
+		this.subject = subject;
+		this.rater_rating = rater_rating;
+		this.stars_given = stars_given;
+		this.createdAt = createdAt;
+	}
+
+
+
+	public User getRater() {
+		return rater;
+	}
+
+	public void setRater(User rater) {
+		this.rater = rater;
+	}
+
+	public User getSubject() {
+		return subject;
+	}
+
+	public void setSubject(User subject) {
+		this.subject = subject;
+	}
+
+	public Double getRater_rating() {
+		return rater_rating;
+	}
+
+
+	public void setRater_rating(Double rater_rating) {
+		this.rater_rating = rater_rating;
+	}
+
+
+	public Integer getStars_given() {
+		return stars_given;
+	}
+
+	public void setStars_given(Integer stars_given) {
+		this.stars_given = stars_given;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Rating [id=" + id + ", rater=" + rater + ", subject=" + subject + ", stars_given=" + stars_given
+				+ ", createdAt=" + createdAt + "]";
+	}
+	
+	
+	
+	
+	
+	
 
 }
