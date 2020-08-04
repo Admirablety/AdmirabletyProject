@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.Admirablety.model.Rating;
 import com.Admirablety.model.User;
-import com.Admirablety.service.TweetService;
+import com.Admirablety.service.RatingService;
 import com.Admirablety.service.UserService;
 
 @Controller
@@ -22,7 +22,7 @@ public class RatingController {
     private UserService userService;
 	
     @Autowired
-    private TweetService tweetService;
+    private RatingService tweetService;
     
     @GetMapping(value= {"/tweets", "/"})
     public String displayFeed(Model model){

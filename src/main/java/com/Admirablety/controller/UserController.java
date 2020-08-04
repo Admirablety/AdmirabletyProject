@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.Admirablety.model.Rating;
 import com.Admirablety.model.User;
-import com.Admirablety.service.TweetService;
+import com.Admirablety.service.RatingService;
 import com.Admirablety.service.UserService;
 
 @Controller
@@ -21,7 +21,7 @@ public class UserController {
     private UserService userService;
     
     @Autowired
-    private TweetService tweetService;
+    private RatingService tweetService;
     
     private void setTweetCounts(List<User> users, Model model) {
         HashMap<String,Integer> tweetCounts = new HashMap<>();

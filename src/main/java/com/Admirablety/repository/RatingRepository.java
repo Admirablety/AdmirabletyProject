@@ -9,7 +9,7 @@ import com.Admirablety.model.Rating;
 import com.Admirablety.model.User;
 
 @Repository
-public interface TweetRepository extends CrudRepository<Rating, Long> {
+public interface RatingRepository extends CrudRepository<Rating, Long> {
     List<Rating> findAllByOrderByCreatedAtDesc();
     List<Rating> findAllByUserOrderByCreatedAtDesc(User user);
     List<Rating> findAllByUserInOrderByCreatedAtDesc(List<User> users);

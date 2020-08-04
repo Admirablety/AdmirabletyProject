@@ -59,7 +59,7 @@ public class User {
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Set<TrackRole> roles;
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_follower", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "follower_id"))
@@ -79,7 +79,7 @@ public class User {
 			@Length(min = 5, message = "Your password must have at least 5 characters") @NotEmpty(message = "Please provide a password") String password,
 			@NotEmpty(message = "Please provide your first name") String firstName,
 			@NotEmpty(message = "Please provide your last name") String lastName, int active,
-			Set<Role> roles, List<User> followers, List<User> following) {
+			Set<TrackRole> roles, List<User> followers, List<User> following) {
 		super();
 		this.email = email;
 		this.username = username;
@@ -150,11 +150,11 @@ public class User {
 		this.createdAt = createdAt;
 	}
 
-	public Set<Role> getRoles() {
+	public Set<TrackRole> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(Set<TrackRole> roles) {
 		this.roles = roles;
 	}
 

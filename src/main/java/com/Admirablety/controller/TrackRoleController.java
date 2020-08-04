@@ -13,7 +13,7 @@ import com.Admirablety.model.User;
 import com.Admirablety.service.UserService;
 
 @Controller
-public class TrackController {
+public class TrackRoleController {
     @Autowired
     private UserService userService;
     

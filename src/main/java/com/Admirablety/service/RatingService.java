@@ -7,13 +7,15 @@ import org.springframework.stereotype.Service;
 
 import com.Admirablety.model.Rating;
 import com.Admirablety.model.User;
-import com.Admirablety.repository.TweetRepository;
+import com.Admirablety.repository.RatingRepository;
 
 @Service
-public class TweetService {
+public class RatingService {
 
     @Autowired
-    private TweetRepository tweetRepository;
+    private RatingRepository tweetRepository;
+    
+    // method to recalculate the weighted average rating of a user every time there is a new or updated rating for that User
 
     public List<Rating> findAll() {
         List<Rating> tweets = tweetRepository.findAllByOrderByCreatedAtDesc();

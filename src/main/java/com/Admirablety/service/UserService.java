@@ -9,21 +9,21 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.Admirablety.model.Role;
+import com.Admirablety.model.TrackRole;
 import com.Admirablety.model.User;
-import com.Admirablety.repository.RoleRepository;
+import com.Admirablety.repository.TrackRoleRepository;
 import com.Admirablety.repository.UserRepository;
 
 @Service
 public class UserService {
 
     private UserRepository userRepository;
-    private RoleRepository roleRepository;
+    private TrackRoleRepository roleRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserService(UserRepository userRepository, 
-                       RoleRepository roleRepository,
+                       TrackRoleRepository roleRepository,
                        BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -45,8 +45,8 @@ public class UserService {
     public User saveNewUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
-        Role userRole = roleRepository.findByRole("USER");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        TrackRole userRole = roleRepository.findByRole("USER");
+        user.setRoles(new HashSet<TrackRole>(Arrays.asList(userRole)));
         return userRepository.save(user);
     }
     

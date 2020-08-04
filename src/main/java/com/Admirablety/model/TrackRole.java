@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Role {
+public class TrackRole {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,9 +18,9 @@ public class Role {
     private String role;
     
     
-    public Role() {}
+    public TrackRole() {}
     
-	public Role(String role) {
+	public TrackRole(String role) {
 		super();
 		this.role = role;
 	}
