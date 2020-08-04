@@ -28,7 +28,7 @@ public class RatingController {
     public String displayFeed(Model model){
         List<Rating> tweets = tweetService.findAll();
         model.addAttribute("tweetList", tweets);
-        return "feed";  //looks for a file called "feed", which is feed.html
+        return "feed"; 
     }
     
     @GetMapping(value = "/tweets/new")

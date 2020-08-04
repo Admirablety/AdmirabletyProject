@@ -13,7 +13,7 @@ public class Tracking {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "role_id")
+    @Column(name = "tracking_id")
     private Long id;
     private String role;
     

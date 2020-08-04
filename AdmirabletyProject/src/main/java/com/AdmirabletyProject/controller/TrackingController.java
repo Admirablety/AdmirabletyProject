@@ -21,11 +21,11 @@ public class TrackingController {
     public String follow(@PathVariable(value="username") String username, 
                          HttpServletRequest request) {
     	User loggedInUser = userService.getLoggedInUser();
-    	User userToFollow = userService.findByUsername(username);
-    	List<User> followers = userToFollow.getFollowers();
-    	followers.add(loggedInUser);
-    	userToFollow.setFollowers(followers);
-        userService.save(userToFollow);
+    	User userToTrack = userService.findByUsername(username);
+    	List<User> trackers = userToTrack.getTrackers();
+    	trackers.add(loggedInUser);
+    	userToTrack.setTrackers(trackers);
+        userService.save(userToTrack);
         return "redirect:" + request.getHeader("Referer");
 
     }
@@ -33,11 +33,11 @@ public class TrackingController {
     @PostMapping(value = "/unfollow/{username}")
     public String unfollow(@PathVariable(value="username") String username, HttpServletRequest request) {
         User loggedInUser = userService.getLoggedInUser();
-        User userToUnfollow = userService.findByUsername(username);
-        List<User> followers = userToUnfollow.getFollowers();
-        followers.remove(loggedInUser);
-        userToUnfollow.setFollowers(followers);
-        userService.save(userToUnfollow);
+        User userToPurge = userService.findByUsername(username);
+        List<User> trackers = userToPurge.getTrackers();
+        trackers.remove(loggedInUser);
+        userToPurge.setTrackers(trackers);
+        userService.save(userToPurge);
         return "redirect:" + request.getHeader("Referer");
     }    
 }

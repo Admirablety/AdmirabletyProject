@@ -2,6 +2,7 @@ package com.AdmirabletyProject.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -17,27 +19,23 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Length;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Rating {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "tweet_id")
+	@Column(name = "tracking_id")
 	private Long id;
 		
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "user_id")
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_rater", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "rater_id"))
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private User user;
+	private User rater;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_subject", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private User subject;
 	
 	@NotEmpty(message = "Tweet cannot be empty")
 	@Length(max = 280, message = "Tweet cannot have more than 280 characters")

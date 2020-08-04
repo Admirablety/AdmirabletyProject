@@ -20,7 +20,7 @@ public class AuthorizationController {
 
     @GetMapping("/login")
     public String login(){
-        return "login"; //returns login file (our login file is login.html, but it just looks for any file named "login" under src/main/resources/templates)
+        return "login";
     }
     
     @GetMapping(value="/signup")
