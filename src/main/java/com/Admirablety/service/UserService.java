@@ -30,6 +30,8 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
     
+    // method to determine the designation (Fleet Admirable, Admirable, Vice Admirable, etc.) of a user based on the User's overallRating
+    
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
