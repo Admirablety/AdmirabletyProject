@@ -3,9 +3,9 @@ package com.AdmirabletyProject.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.AdmirabletyProject.model.Tracking;
+import com.AdmirabletyProject.model.Role;
 
 @Repository
-public interface TrackingRepository extends JpaRepository<Tracking, Long> {
-	Tracking findByRole(String role);
+public interface RoleRepository extends JpaRepository<Role, Long> {
+	Role findByRole(String role);
 }

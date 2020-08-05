@@ -1,4 +1,5 @@
-package com.AdmirabletyProject.model;
+package com.AdmirabletyApp.model;
+
 
 import java.util.Date;
 import java.util.List;

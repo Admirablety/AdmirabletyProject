@@ -1,4 +1,4 @@
-package com.AdmirabletyProject.controller;
+package com.AdmirabletyApp.controller;
 
 import java.util.List;
 
@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.AdmirabletyProject.model.Rating;
-import com.AdmirabletyProject.model.User;
-import com.AdmirabletyProject.service.RatingService;
-import com.AdmirabletyProject.service.UserService;
+import com.AdmirabletyApp.model.Rating;
+import com.AdmirabletyApp.model.User;
+import com.AdmirabletyApp.service.RatingService;
+import com.AdmirabletyApp.service.UserService;
+
+
 
 @Controller
 public class RatingController {
@@ -25,6 +27,7 @@ public class RatingController {
 	
     @Autowired
     private RatingService ratingService;
+    
     
     
     @PostMapping(value = "/ratings")
@@ -39,6 +42,8 @@ public class RatingController {
         return "newRating";
     }
     
+    
+    // to rate a user
     @PostMapping(value = "/rate/{username}")
     public String rate(@Valid Rating rating, @PathVariable(value="username") String username, 
                          HttpServletRequest request) {
@@ -53,6 +58,8 @@ public class RatingController {
 
     }
     
+    
+    /*
     //Get method for the last five ratings given to the user as the subject
     @GetMapping
     public String getSubjectsLastFive(User subject, Model model) {
@@ -68,6 +75,15 @@ public class RatingController {
     	model.addAttribute("ratersRatingList",ratings); 
         return "ratersLastFive";
     }
+    */
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     /*

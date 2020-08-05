@@ -1,4 +1,5 @@
-package com.AdmirabletyProject.service;
+package com.AdmirabletyApp.service;
+
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,10 +11,12 @@ import org.ocpsoft.prettytime.PrettyTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.AdmirabletyProject.model.Rating;
-import com.AdmirabletyProject.model.RatingDisplay;
-import com.AdmirabletyProject.model.User;
-import com.AdmirabletyProject.repository.RatingRepository;
+import com.AdmirabletyApp.model.Rating;
+import com.AdmirabletyApp.model.RatingDisplay;
+import com.AdmirabletyApp.model.User;
+import com.AdmirabletyApp.repository.RatingRepository;
+
+
 
 @Service
 public class RatingService {

@@ -1,4 +1,4 @@
-package com.AdmirabletyProject.service;
+package com.AdmirabletyApp.service;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -9,10 +9,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.AdmirabletyProject.model.Role;
-import com.AdmirabletyProject.model.User;
-import com.AdmirabletyProject.repository.RoleRepository;
-import com.AdmirabletyProject.repository.UserRepository;
+import com.AdmirabletyApp.model.Role;
+import com.AdmirabletyApp.model.User;
+import com.AdmirabletyApp.repository.RoleRepository;
+import com.AdmirabletyApp.repository.UserRepository;
+
+
 
 @Service
 public class UserService {

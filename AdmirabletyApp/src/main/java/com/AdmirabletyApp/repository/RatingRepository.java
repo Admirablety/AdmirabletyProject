@@ -1,12 +1,12 @@
-package com.AdmirabletyProject.repository;
+package com.AdmirabletyApp.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.AdmirabletyProject.model.Rating;
-import com.AdmirabletyProject.model.User;
+import com.AdmirabletyApp.model.Rating;
+import com.AdmirabletyApp.model.User;
 
 @Repository
 public interface RatingRepository extends CrudRepository<Rating, Long> {
@@ -15,7 +15,7 @@ public interface RatingRepository extends CrudRepository<Rating, Long> {
     List<Rating> findAllByRaterOrderByCreatedAtDesc(User rater);
     
     
-	List<Rating> findAllByOrderByCreatedAtDesc();
+	// List<Rating> findAllByOrderByCreatedAtDesc();
     // List<Rating> findAllByUserOrderByCreatedAtDesc(User user);
     // List<Rating> findAllByUserInOrderByCreatedAtDesc(List<User> users);
 }
