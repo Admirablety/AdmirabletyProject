@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+	<head>
+	    <title>Navigation Bar</title>
+	    <div th:replace="/fragments/styling :: head-style" ></div>
+	</head>
+
+	<body>
+		<div th:fragment="navbar">
+			<nav class="row navbar navbar-inverse">
+		    	<div class="container-fluid">
+		        	<div class="navbar-header">
+		            	<a class="navbar-brand" href="#" style="color: #00aced">
+		                	<i class="fab fa-twitter"></i> Tech Talent Twitter</a>
+		        	</div>
+			        <div id="navbar">
+			    		<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+			        		<li><a class="twitterblue" href="/tweets">Home</a></li>
+			        		<li><a class="twitterblue" href="/tweets/new">New Tweet</a></li>
+			        		<li><a class="twitterblue" href="/users">All Users</a></li>
+			    		</ul>
+			            <ul class="nav navbar-nav navbar-right">
+			                <li sec:authorize="isAuthenticated()"><a style="pointer-events: none;color: #00aced">
+			                    @<span sec:authentication="name"></span></a></li>
+			                <li sec:authorize="isAuthenticated()"><a href="../logout">Logout</a></li>
+			                <li sec:authorize="!isAuthenticated()"><a href="../login">Login</a></li>
+			            </ul>
+			        </div>
+			    </div>
+			</nav>
+		</div>
+
+		<div th:replace="/fragments/styling :: bodyLinks" ></div>
+
+	</body>
+
+</html>

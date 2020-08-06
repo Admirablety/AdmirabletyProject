@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+	<head>
+	    <title>Feed</title>
+	    <div th:replace="/fragments/styling :: head-style" ></div>
+	</head>
+	
+	<body>
+	    <div class="container">
+	
+	        <div th:replace="fragments/navbar"></div>
+	
+	        <ul class="nav nav-tabs">
+	            <li role="presentation" th:classappend="${filter == 'all' ? 'active' : '' }">
+	                <a href="/tweets">All &#124;</a>
+	            </li>
+	            <li>
+	                <h3></h3>
+	            </li>
+	            <li role="presentation" th:classappend="${filter == 'following' ? 'active' : '' }">
+	                <a href="/tweets?filter=following">&#124; Following</a>
+	            </li>
+	        </ul>
+	
+	        <br/>
+	
+	        <h2>Tweets</h2>
+	        <div th:each="tweet:${tweetList}">
+	            <!-- vvvvv figure this line out vvvvv -->
+	            <!-- <div th:if="${followingStatus.get(tweet.user.username) == true}">  -->
+	                <div style="padding: 20px">
+	                    <div class="card" style="width: 80%;">
+	                        <div class="card-body">
+	                            <h5>@<a class="username" th:href="@{/users/} + ${tweet.user.username}">
+	                                    <span th:text="${tweet.user.username}"></span>
+	                                </a>
+	                                <small th:text="${tweet.date}"></small>
+	                            </h5>
+	                            <p th:utext="${tweet.message}"></p>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	    	</div>
+	
+	
+	        <div th:if="${#lists.isEmpty(tweetList) and filter == 'all'}">
+	            <h3>No tweets have been created yet</h3>
+	        </div>
+	
+	        <div th:if="${#lists.isEmpty(tweetList) and filter == 'following'}">
+	            <h3>No tweets have been created by your followers</h3>
+	        </div>
+	
+	    </div>
+	
+	
+	
+	    <div th:replace="/fragments/styling :: bodyLinks" ></div>
+	
+	</body>
+
+</html>
